@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <link href="styles.css" rel="stylesheet">
+    <title>Avi's Sports News & Scores</title>
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="https://i.imgur.com/8V78FHG.png">
+    <style>
+      body {
+        /* Replace with your background image URL */
+        background-image: url('https://cdn.vox-cdn.com/uploads/chorus_asset/file/25943073/2025_4_5UConnHuskiesWBBSouthCarolinaGamecocksNationalChampionship006.JPG');
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    </style>
+</head>
+
+<body class="indent">
+    <a href="index.html">
+        <img src="https://i.imgur.com/8V78FHG.png"
+             alt="Avi's Sports News & Scores logo"
+             class="site-logo">
+    </a>
+    <h1><a href="index.html" style="color: inherit; text-decoration: none;">Avi's Sports News & Scores</a></h1>
+    <nav class="indent-top navbar navbar-expand-lg">
+        <div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="nfl.html">NFL</a>
+                    <a class="nav-link" href="nba.html">NBA</a>
+                    <a class="nav-link" href="mlb.html">MLB</a>
+                    <a class="nav-link" href="nhl.html">NHL</a>
+                    <a class="nav-link" href="ncaaf.html">NCAAF</a>
+                    <a class="nav-link" href="ncaam.html">NCAAM</a>
+                    <a class="nav-link active fw-bold" aria-current="page" href="ncaaw.html">NCAAW</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h2>
+        Women's College Basketball
+        <img src="https://a.espncdn.com/redesign/assets/img/icons/ESPN-icon-basketball.png"
+             alt="Women's College Basketball logo"
+             style="height:40px; margin-left:2px;">
+    </h2>
+
+    <label for="teams">Team:</label>
+    <select name="teams" id="teams">
+        <option value="select">Select a Team</option>
+        <option value="alabama">Alabama Crimson Tide</option>
+        <option value="arizonastate">Arizona State Sun Devils</option>
+        <option value="arizona">Arizona Wildcats</option>
+        <option value="arkansas">Arkansas Razorbacks</option>
+        <option value="arkansasstate">Arkansas State Red Wolves</option>
+        <option value="auburn">Auburn Tigers</option>
+        <option value="baylor">Baylor Bears</option>
+        <option value="belmont">Belmont Bruins</option>
+        <option value="boisestate">Boise State Broncos</option>
+        <option value="bostoncollege">Boston College Eagles</option>
+        <option value="byu">BYU Cougars</option>
+        <option value="csufullerton">Cal State Fullerton Titans</option>
+        <option value="california">California Golden Bears</option>
+        <option value="clemson">Clemson Tigers</option>
+        <option value="cincinnati">Cincinnati Bearcats</option>
+        <option value="colorado">Colorado Buffaloes</option>
+        <option value="coloradostate">Colorado State Rams</option>
+        <option value="creighton">Creighton Bluejays</option>
+        <option value="dayton">Dayton Flyers</option>
+        <option value="depaul">DePaul Blue Demons</option>
+        <option value="drake">Drake Bulldogs</option>
+        <option value="duke">Duke Blue Devils</option>
+        <option value="florida">Florida Gators</option>
+        <option value="floridastate">Florida State Seminoles</option>
+        <option value="georgia">Georgia Bulldogs</option>
+        <option value="georgetown">Georgetown Hoyas</option>
+        <option value="georgiasouthern">Georgia Southern Eagles</option>
+        <option value="georgiastate">Georgia State Panthers</option>
+        <option value="georgiatech">Georgia Tech Yellow Jackets</option>
+        <option value="gonzaga">Gonzaga Bulldogs</option>
+        <option value="houston">Houston Cougars</option>
+        <option value="illinois">Illinois Fighting Illini</option>
+        <option value="indiana">Indiana Hoosiers</option>
+        <option value="iowa">Iowa Hawkeyes</option>
+        <option value="iowastate">Iowa State Cyclones</option>
+        <option value="kansas">Kansas Jayhawks</option>
+        <option value="kansasstate">Kansas State Wildcats</option>
+        <option value="kentucky">Kentucky Wildcats</option>
+        <option value="loyolachicago">Loyola Chicago Ramblers</option>
+        <option value="louisville">Louisville Cardinals</option>
+        <option value="lsu">LSU Tigers</option>
+        <option value="marquette">Marquette Golden Eagles</option>
+        <option value="maryland">Maryland Terrapins</option>
+        <option value="miamifl">Miami Hurricanes</option>
+        <option value="michiganstate">Michigan State Spartans</option>
+        <option value="michigan">Michigan Wolverines</option>
+        <option value="minnesota">Minnesota Golden Gophers</option>
+        <option value="mississippistate">Mississippi State Bulldogs</option>
+        <option value="missouri">Missouri Tigers</option>
+        <option value="ncstate">NC State Wolfpack</option>
+        <option value="nebraska">Nebraska Cornhuskers</option>
+        <option value="nevada">Nevada Wolf Pack</option>
+        <option value="newmexico">New Mexico Lobos</option>
+        <option value="newmexicostate">New Mexico State Aggies</option>
+        <option value="northcarolina">North Carolina Tar Heels</option>
+        <option value="northtexas">North Texas Mean Green</option>
+        <option value="northwestern">Northwestern Wildcats</option>
+        <option value="notredame">Notre Dame Fighting Irish</option>
+        <option value="ohiobobcats">Ohio Bobcats</option>
+        <option value="ohio">Ohio State Buckeyes</option>
+        <option value="oklahoma">Oklahoma Sooners</option>
+        <option value="oklahomastate">Oklahoma State Cowboys</option>
+        <option value="oralroberts">Oral Roberts Golden Eagles</option>
+        <option value="olemiss">Ole Miss Rebels</option>
+        <option value="oregon">Oregon Ducks</option>
+        <option value="oregonstate">Oregon State Beavers</option>
+        <option value="pacific">Pacific Tigers</option>
+        <option value="pennstate">Penn State Nittany Lions</option>
+        <option value="pepperdine">Pepperdine Waves</option>
+        <option value="pittsburgh">Pittsburgh Panthers</option>
+        <option value="purdue">Purdue Boilermakers</option>
+        <option value="providence">Providence Friars</option>
+        <option value="richmond">Richmond Spiders</option>
+        <option value="rutgers">Rutgers Scarlet Knights</option>
+        <option value="sandiegostate">San Diego State Aztecs</option>
+        <option value="sandiegotoreros">San Diego Toreros</option>
+        <option value="sanfrancisco">San Francisco Dons</option>
+        <option value="setonhall">Seton Hall Pirates</option>
+        <option value="smu">SMU Mustangs</option>
+        <option value="southcarolina">South Carolina Gamecocks</option>
+        <option value="stbonaventure">St. Bonaventure Bonnies</option>
+        <option value="stfrancisny">St. Francis (NY) Terriers</option>
+        <option value="stfrancispa">St. Francis (PA) Red Flash</option>
+        <option value="stjohns">St. John's Red Storm</option>
+        <option value="stanford">Stanford Cardinal</option>
+        <option value="syracuse">Syracuse Orange</option>
+        <option value="tcu">TCU Horned Frogs</option>
+        <option value="temple">Temple Owls</option>
+        <option value="tennessee">Tennessee Volunteers</option>
+        <option value="texasam">Texas A&M Aggies</option>
+        <option value="texas">Texas Longhorns</option>
+        <option value="texastech">Texas Tech Red Raiders</option>
+        <option value="toledo">Toledo Rockets</option>
+        <option value="troy">Troy Trojans</option>
+        <option value="tulane">Tulane Green Wave</option>
+        <option value="tulsa">Tulsa Golden Hurricane</option>
+        <option value="ucf">UCF Knights</option>
+        <option value="uconn">UConn Huskies</option>
+        <option value="ucla">UCLA Bruins</option>
+        <option value="uncgreensboro">UNC Greensboro Spartans</option>
+        <option value="usc">USC Trojans</option>
+        <option value="utah">Utah Utes</option>
+        <option value="utahstate">Utah State Aggies</option>
+        <option value="vcu">VCU Rams</option>
+        <option value="vanderbilt">Vanderbilt Commodores</option>
+        <option value="villanova">Villanova Wildcats</option>
+        <option value="virginia">Virginia Cavaliers</option>
+        <option value="virginiatech">Virginia Tech Hokies</option>
+        <option value="wakeforest">Wake Forest Demon Deacons</option>
+        <option value="washington">Washington Huskies</option>
+        <option value="washingtonstate">Washington State Cougars</option>
+        <option value="westvirginia">West Virginia Mountaineers</option>
+        <option value="westernkentucky">Western Kentucky Hilltoppers</option>
+        <option value="westernmichigan">Western Michigan Broncos</option>
+        <option value="wichitastate">Wichita State Shockers</option>
+        <option value="wisconsin">Wisconsin Badgers</option>
+        <option value="xavier">Xavier Musketeers</option>
+    </select>
+    <div id="resultsSection" style="display: none;">
+    <h3>
+        Team Record:
+        <span id="record"></span>
+        <img id="teamLogo" alt="Team logo" style="height:60px; margin-left:10px; display:none;">
+    </h3>
+    <h3>Recent Games:</h3>
+    <table id="gamesTable" class="table table-sm"></table>
+    <h3 id="headlinesTitle">News:</h3>
+    <ul id="headlinesList"></ul>
+    </div>
+
+    <script>
+        document.getElementById('teams').addEventListener('change', function () {
+            const selectedTeam = this.value;
+            if (selectedTeam !== "select") {
+                fetchLatestGame(selectedTeam);
+                fetchLatestHeadlines(selectedTeam);
+                fetchTeamColor(selectedTeam);
+                document.getElementById('resultsSection').style.display = '';
+                document.body.style.backgroundImage = 'none';
+                document.getElementById('teams').style.backgroundColor = 'rgba(0, 0, 0, 0)';
+            } else {
+                document.body.style.backgroundImage = "url('https://cdn.vox-cdn.com/uploads/chorus_asset/file/25943073/2025_4_5UConnHuskiesWBBSouthCarolinaGamecocksNationalChampionship006.JPG')";
+                document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+                document.body.style.color = "white";
+                const img = document.getElementById('teamLogo');
+                if (img) {
+                  img.style.display = "none";
+                }
+                document.getElementById('resultsSection').style.display = 'none';
+                document.getElementById('teams').style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            }
+        });
+
+        const teamMappings = {
+            "alabama": 333, "arizonastate": 9, "arizona": 12, "arkansas": 8, "arkansasstate": 2032, "auburn": 2,
+            "baylor": 239, "belmont": 2057, "boisestate": 68, "bostoncollege": 103, "byu": 252,
+            "csufullerton": 2239, "california": 25, "clemson": 228, "cincinnati": 2132, "colorado": 38,
+            "coloradostate": 36, "creighton": 156, "dayton": 2168, "depaul": 305, "drake": 2181,
+            "duke": 150, "florida": 57, "floridastate": 52, "georgia": 61, "georgetown": 46,
+            "georgiasouthern": 290, "georgiastate": 2247, "georgiatech": 59, "gonzaga": 2250, "houston": 248,
+            "illinois": 356, "indiana": 84, "iowa": 2294, "iowastate": 66, "kansas": 2305,
+            "kansasstate": 2306, "kentucky": 96, "loyolachicago": 2350, "louisville": 97, "lsu": 99,
+            "marquette": 269, "maryland": 120, "miamifl": 2390, "michiganstate": 127, "michigan": 130,
+            "minnesota": 135, "mississippistate": 344, "missouri": 142, "ncstate": 152, "nebraska": 158,
+            "nevada": 2440, "newmexico": 167, "newmexicostate": 166, "northcarolina": 153,
+            "northtexas": 249, "northwestern": 77, "notredame": 87, "ohiobobcats": 195, "ohio": 194,
+            "oklahoma": 201, "oklahomastate": 197, "oralroberts": 198, "olemiss": 145, "oregon": 2483,
+            "oregonstate": 204, "pacific": 279, "pennstate": 213, "pepperdine": 2492, "pittsburgh": 221,
+            "purdue": 2509, "providence": 2507, "richmond": 257, "rutgers": 164, "sandiegostate": 21,
+            "sandiegotoreros": 301, "sanfrancisco": 2539, "setonhall": 2550, "smu": 2567, "southcarolina": 2579,
+            "stbonaventure": 179, "stfrancisny": 2598, "stfrancispa": 2599, "stjohns": 2596,
+            "stanford": 24, "syracuse": 183, "tcu": 2628, "temple": 218, "tennessee": 2633,
+            "texasam": 245, "texas": 251, "texastech": 2641, "toledo": 2649, "troy": 2653,
+            "tulane": 2655, "tulsa": 202, "ucf": 2116, "uconn": 41, "ucla": 26, "uncgreensboro": 2430,
+            "usc": 30, "utah": 254, "utahstate": 328, "vcu": 2670, "vanderbilt": 238,
+            "villanova": 222, "virginia": 258, "virginiatech": 259, "wakeforest": 154,
+            "washington": 264, "washingtonstate": 265, "westvirginia": 277,
+            "westernkentucky": 98, "westernmichigan": 2711, "wichitastate": 2724, "wisconsin": 275,
+            "xavier": 2752
+        };
+        // ------ helper to pick the best logo URL ----------------------------
+        const getLogoUrl = t => t.logo ?? t.logos?.[0]?.href ?? "";
+
+        async function fetchTeamColor(teamId) {
+            try {
+                const teamEspnId = teamMappings[teamId];
+                const response = await fetch(
+                    `https://site.api.espn.com/apis/site/v2/sports/basketball/womens-college-basketball/teams/${teamEspnId}`
+                );
+                const data = await response.json();
+
+                // ESPN returns hex strings without “#”
+                const colorHex = (data.team && data.team.color) || data.color || "FFFFFF";
+                const altColorHex = (data.team && data.team.alternateColor) || data.alternateColor || "000000";
+
+                document.body.style.backgroundColor = "#" + colorHex;
+                document.body.style.color = "#" + altColorHex;
+                document.body.style.backgroundImage = "none";
+                document.getElementById('teams').style.backgroundColor = 'rgba(0, 0, 0, 0)';
+            } catch (err) {
+                console.error("Error fetching team color:", err);
+                document.body.style.backgroundImage = "url('path/to/your/background.jpg')";
+                document.body.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+                document.body.style.color = "white";
+                document.getElementById('teams').style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            }
+        }
+
+        function updateRecord(games, teamId) {
+            const teamEspnId = teamMappings[teamId];
+            let wins = 0;
+            let losses = 0;
+
+            games.forEach((game, index) => {
+                console.log("game", index, " - ", game);
+
+                const competitors = game.competitions[0].competitors;
+                let selectedTeamObj = null;
+                let opponentTeam = null;
+
+                competitors.forEach(currentTeam => {
+                    if (currentTeam.team.id == teamEspnId) {
+                        selectedTeamObj = currentTeam;
+                    } else {
+                        opponentTeam = currentTeam;
+                    }
+                });
+
+                let selectedTeamScore = selectedTeamObj?.score ? parseInt(selectedTeamObj.score.value) : 0;
+                let opponentScore = opponentTeam?.score ? parseInt(opponentTeam.score.value) : 0;
+
+                console.log(selectedTeamScore);
+                console.log(opponentScore);
+
+                if (selectedTeamScore > opponentScore) {
+                    wins++;
+                } else if (selectedTeamScore < opponentScore) {
+                    losses++;
+                }
+            });
+
+            document.getElementById('record').innerText = `${wins}-${losses}`;
+        }
+
+        async function fetchLatestGame(teamId) {
+            try {
+                const teamEspnId = teamMappings[teamId];
+                let teamLogoUrl = "";
+                let teamDisplayName = "";
+
+                const regularSeasonUrl = `https://site.api.espn.com/apis/site/v2/sports/basketball/womens-college-basketball/teams/${teamEspnId}/schedule?seasontype=2`;
+                const postseasonUrl = `https://site.api.espn.com/apis/site/v2/sports/basketball/womens-college-basketball/teams/${teamEspnId}/schedule?seasontype=3`;
+
+                const [regularRes, postRes] = await Promise.all([fetch(regularSeasonUrl), fetch(postseasonUrl)]);
+                const [regularData, postData] = await Promise.all([regularRes.json(), postRes.json()]);
+
+                const regularGames = regularData.events || [];
+                const postseasonGames = postData.events || [];
+                const allGames = [...regularGames, ...postseasonGames];
+
+                if (allGames.length === 0) {
+                    document.getElementById('gamesTable').innerHTML =
+                      `<thead><tr><th>Date</th><th>Team</th><th>Score</th><th>Opponent</th><th>W/L</th></tr></thead>
+                       <tbody><tr><td colspan="5">No games found.</td></tr></tbody>`;
+                    return;
+                }
+
+                const completedGames = allGames.filter(game =>
+                    game.competitions[0].status.type.completed === true
+                );
+
+                if (completedGames.length === 0) {
+                    document.getElementById('gamesTable').innerHTML =
+                      `<thead><tr><th>Date</th><th>Team</th><th>Score</th><th>Opponent</th><th>W/L</th></tr></thead>
+                       <tbody><tr><td colspan="5">No completed games available.</td></tr></tbody>`;
+                    return;
+                }
+
+                completedGames.sort((a, b) =>
+                    new Date(b.competitions[0].date) - new Date(a.competitions[0].date)
+                );
+
+                updateRecord(completedGames, teamId);
+
+                const recentGames = completedGames.slice(0, 5);
+
+                const rowsHtml = recentGames.map(game => {
+                    const comps = game.competitions[0].competitors;
+                    const sel = comps.find(t => t.team.id == teamEspnId);
+                    const opp = comps.find(t => t.team.id != teamEspnId);
+                    if (!teamLogoUrl) {
+                        teamLogoUrl     = getLogoUrl(sel.team);
+                        teamDisplayName = sel.team.displayName;
+                    }
+                    const s = sel.score ? +sel.score.value : 0;
+                    const o = opp.score ? +opp.score.value : 0;
+                    const result = s > o ? "W" : "L";
+                    const date = new Date(game.date).toLocaleDateString(undefined, {
+                        year: 'numeric', month: 'short', day: 'numeric'
+                    });
+                    return `<tr>
+                                <td>${date}</td>
+                                <td><img src="${getLogoUrl(sel.team)}" style="height:30px;margin-right:4px;">${sel.team.displayName}</td>
+                                <td>${s}-${o}</td>
+                                <td><img src="${getLogoUrl(opp.team)}" style="height:30px;margin-right:4px;">${opp.team.displayName}</td>
+                                <td>${result}</td>
+                            </tr>`;
+                }).join("");
+                document.getElementById('gamesTable').innerHTML =
+                  `<thead><tr><th>Date</th><th>Team</th><th>Score</th><th>Opponent</th><th>W/L</th></tr></thead>
+                   <tbody>${rowsHtml}</tbody>`;
+                // show crest next to record
+                if (teamLogoUrl) {
+                    const img = document.getElementById('teamLogo');
+                    img.src = teamLogoUrl;
+                    img.alt = teamDisplayName + " logo";
+                    img.style.display = "inline-block";
+                }
+
+            } catch (error) {
+                document.getElementById('gamesTable').innerHTML =
+                  `<thead><tr><th>Date</th><th>Team</th><th>Score</th><th>Opponent</th><th>W/L</th></tr></thead>
+                   <tbody><tr><td colspan="5">Error fetching game data.</td></tr></tbody>`;
+                console.error("Error fetching game:", error);
+            }
+        }
+        async function fetchLatestHeadlines(teamId) {
+            try {
+
+                const teamEspnId = teamMappings[teamId];
+
+                const response = await fetch(`https://site.api.espn.com/apis/site/v2/sports/basketball/womens-college-basketball/news?team=${teamEspnId}`);
+                const data = await response.json();
+
+                const headlinesList = document.getElementById('headlinesList');
+                headlinesList.innerHTML = '';
+
+                const nonPremiumArticles = data.articles.filter(article => !article.premium);
+
+                if (nonPremiumArticles.length > 0) {
+                    const recentHeadlines = nonPremiumArticles.slice(0, 3);
+                    recentHeadlines.forEach(article => {
+                        const listItem = document.createElement('li');
+                        // add date prefix
+                        const dateStr = new Date(
+                            article.published || article.lastModified || article.updated
+                        ).toLocaleDateString(undefined, {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric'
+                        });
+                        listItem.innerHTML = `${dateStr}: `;
+                        const link = document.createElement('a');
+                        link.href = article.links.web.href;
+                        link.innerText = article.headline;
+                        link.target = "_blank";
+                        listItem.appendChild(link);
+                        headlinesList.appendChild(listItem);
+                    });
+                } else {
+                    headlinesList.innerText = "No recent headlines available.";
+                }
+
+            } catch (error) {
+                document.getElementById('headlinesList').innerText = "Error fetching headlines.";
+                console.error("Error fetching headlines:", error);
+            }
+        }
+
+        // Initial data is not loaded until a team is selected.
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+.indent {
+    padding-left: 8%;
+    padding-right: 8%;
+}
+
+/* Remove vertical top padding for navbar */
+nav.indent-top.navbar {
+    padding-top: 0;
+}
+
+/* Make the dropdown box blend with the current team colors */
+#teams {
+    background-color: inherit;  /* matches page background */
+    color: inherit;             /* matches page text */
+    border-color: inherit;      /* subtle border */
+}
+
+/* Make headlines and navbar links adopt the current page text color */
+#headlinesList a,
+.navbar-nav .nav-link,
+.navbar-nav .nav-link.active {
+    color: inherit;
+}
+
+/* Dim inactive navbar links and highlight the active one */
+.navbar-nav .nav-link:not(.active) {
+    opacity: 0.8;            /* faded look for inactive links */
+    transition: opacity 0.2s ease-in-out;
+}
+
+.navbar-nav .nav-link.active {
+    font-size: 1.1rem;       /* slightly larger */
+    font-weight: 800;        /* extra bold */
+    opacity: 1;              /* full opacity */
+}
+
+/* ----- NFL Recent‑Games table styling ----- */
+#gamesTable {
+    background-color: transparent;   /* see‐through table body */
+    border-collapse: collapse;       /* single, merged gridlines */
+    color: inherit;                  /* keep text in the current accent color */
+}
+
+#gamesTable th,
+#gamesTable td {
+    background-color: transparent;   /* remove Bootstrap gray */
+    border: 2px solid currentColor;  /* stronger lines in the current text color */
+    color: inherit;                  /* ensure cell text inherits the accent color */
+}
+
+/* Fixed site logo, manageable from one place */
+.site-logo {
+    position: fixed;
+    top: 8px;
+    left: 15px;
+    width: 75px !important;  /* slightly larger badge */
+    height: auto;
+    z-index: 1050;
+}
+
+/* Subtle outline & shadow for team logos */
+#gamesTable img,
+#teamLogo {
+    border-radius: 4px;
+    background-color: transparent;         /* no backdrop */
+    padding: 0;                            /* no extra padding */
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 1));
+}
+
+/* Ensure navbar sits at very top by removing h1 margins */
+h1 {
+    margin: 0;
+}
+
+/* Force all page text to white */
+body {
+    color: white;
+}

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <link href="styles.css" rel="stylesheet">
+    <title>Avi's Sports News & Scores</title>
+        <!-- favicon -->
+        <link rel="icon" type="image/png" href="https://i.imgur.com/8V78FHG.png">
+        <style>
+            body {
+              /* Replace with your background image URL */
+              background-image: url('https://www.usatoday.com/gcdn/authoring/authoring-images/2024/06/18/USAT/74132357007-usatsi-23570427.jpg');
+              background-size: cover;
+              background-position: top center;
+              background-repeat: no-repeat;
+              background-color: rgba(0, 0, 0, 0.5);
+            }
+          </style>
+</head>
+
+<body class="indent">
+    <a href="index.html">
+        <img src="https://i.imgur.com/8V78FHG.png"
+             alt="Avi's Sports News & Scores logo"
+             class="site-logo">
+    </a>
+    <h1><a href="index.html" style="color: inherit; text-decoration: none;">Avi's Sports News & Scores</a></h1>
+    <nav class="indent-top navbar navbar-expand-lg">
+        <div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="nfl.html">NFL</a>
+                    <a class="nav-link active fw-bold" aria-current="page" href="nba.html">NBA</a>
+                    <a class="nav-link" href="mlb.html">MLB</a>
+                    <a class="nav-link" href="nhl.html">NHL</a>
+                    <a class="nav-link" href="ncaaf.html">NCAAF</a>
+                    <a class="nav-link" href="ncaam.html">NCAAM</a>
+                    <a class="nav-link" href="ncaaw.html">NCAAW</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h2>
+        NBA
+        <img src="https://a.espncdn.com/combiner/i?img=/i/teamlogos/leagues/500/nba.png"
+             alt="NBA logo"
+             style="height:40px; margin-left:2px;">
+    </h2>
+
+    <label for="teams">Team:</label>
+    <select name="teams" id="teams">
+        <option value="select">Select a Team</option>
+        <option value="hawks">Atlanta Hawks</option>
+        <option value="celtics">Boston Celtics</option>
+        <option value="nets">Brooklyn Nets</option>
+        <option value="hornets">Charlotte Hornets</option>
+        <option value="bulls">Chicago Bulls</option>
+        <option value="cavaliers">Cleveland Cavaliers</option>
+        <option value="mavericks">Dallas Mavericks</option>
+        <option value="nuggets">Denver Nuggets</option>
+        <option value="pistons">Detroit Pistons</option>
+        <option value="warriors">Golden State Warriors</option>
+        <option value="rockets">Houston Rockets</option>
+        <option value="pacers">Indiana Pacers</option>
+        <option value="clippers">LA Clippers</option>
+        <option value="lakers">Los Angeles Lakers</option>
+        <option value="grizzlies">Memphis Grizzlies</option>
+        <option value="heat">Miami Heat</option>
+        <option value="bucks">Milwaukee Bucks</option>
+        <option value="timberwolves">Minnesota Timberwolves</option>
+        <option value="pelicans">New Orleans Pelicans</option>
+        <option value="knicks">New York Knicks</option>
+        <option value="thunder">Oklahoma City Thunder</option>
+        <option value="magic">Orlando Magic</option>
+        <option value="76ers">Philadelphia 76ers</option>
+        <option value="suns">Phoenix Suns</option>
+        <option value="blazers">Portland Trail Blazers</option>
+        <option value="kings">Sacramento Kings</option>
+        <option value="spurs">San Antonio Spurs</option>
+        <option value="raptors">Toronto Raptors</option>
+        <option value="jazz">Utah Jazz</option>
+        <option value="wizards">Washington Wizards</option>
+    </select>
+    <div id="resultsSection" style="display: none;">
+    <h3>
+        Team Record:
+        <span id="record"></span>
+        <img id="teamLogo"
+             alt="Team logo"
+             style="height:60px; margin-left:10px; display:none;">
+    </h3>
+
+    <h3>Recent Games:</h3>
+    <table id="gamesTable" class="table table-sm"></table>
+    <h3 id="headlinesTitle">News:</h3>
+    <ul id="headlinesList"></ul>
+    </div>
+
+    <script>
+        const teamMappings = {
+            "hawks": 1, "celtics": 2, "nets": 17, "hornets": 30, "bulls": 4, "cavaliers": 5,
+            "mavericks": 6, "nuggets": 7, "pistons": 8, "warriors": 9, "rockets": 10,
+            "pacers": 11, "clippers": 12, "lakers": 13, "grizzlies": 29, "heat": 14,
+            "bucks": 15, "timberwolves": 16, "pelicans": 3, "knicks": 18, "thunder": 25,
+            "magic": 19, "76ers": 20, "suns": 21, "blazers": 22, "kings": 23,
+            "spurs": 24, "raptors": 28, "jazz": 26, "wizards": 27
+        };
+
+        // helper to pick the best logo
+        const getLogoUrl = t => t.logo ?? t.logos?.[0]?.href ?? "";
+
+        document.getElementById('teams').addEventListener('change', function () {
+            const selectedTeam = this.value;
+            if (selectedTeam !== "select") {
+                fetchLatestGame(selectedTeam);
+                fetchLatestHeadlines(selectedTeam);
+                fetchTeamColor(selectedTeam);
+                document.getElementById('resultsSection').style.display = '';
+                document.getElementById('teams').style.backgroundColor = 'rgba(0, 0, 0, 0)';
+            } else {
+                document.body.style.backgroundColor = "white";
+                document.body.style.color = "white";
+                document.body.style.backgroundImage = "url('https://www.usatoday.com/gcdn/authoring/authoring-images/2024/06/18/USAT/74132357007-usatsi-23570427.jpg')";
+
+                document.getElementById('record').innerText = "";
+                document.getElementById('gamesTable').innerHTML = "";
+                document.getElementById('headlinesList').innerHTML = "";
+
+                const logoElem = document.getElementById('teamLogo');
+                logoElem.src = "";
+                logoElem.style.display = "none";
+                document.getElementById('resultsSection').style.display = 'none';
+                document.getElementById('teams').style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            }
+        });
+
+        async function fetchTeamColor(teamId) {
+            try {
+                const teamEspnId = teamMappings[teamId];
+                const response = await fetch(`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/${teamEspnId}`);
+                const data = await response.json();
+
+                // ESPN returns a hex color string without the leading '#'
+                const colorHex = (data.team && data.team.color) || data.color || "FFFFFF";
+                const altColorHex = (data.team && data.team.alternateColor) || data.alternateColor || "000000";
+                document.body.style.backgroundColor = "#" + colorHex;
+                document.body.style.color = "#" + altColorHex;
+                document.body.style.backgroundImage = "none";
+                document.getElementById('teams').style.backgroundColor = 'rgba(0, 0, 0, 0)';
+            } catch (error) {
+                console.error("Error fetching team color:", error);
+                document.body.style.backgroundColor = "white";
+                document.body.style.color = "black";
+                document.body.style.backgroundImage = "none";
+                document.getElementById('teams').style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            }
+        }
+
+        async function fetchLatestGame(teamId) {
+            try {
+                const teamEspnId = teamMappings[teamId];
+                let teamLogoUrl = "";
+                let teamDisplayName = "";
+
+                const [regularSeasonResponse, playoffResponse] = await Promise.all([
+                    fetch(`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/${teamEspnId}/schedule?seasontype=2`),
+                    fetch(`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/${teamEspnId}/schedule?seasontype=3`)
+                ]);
+
+                const regularSeasonData = await regularSeasonResponse.json();
+                const playoffData = await playoffResponse.json();
+
+                const allGames = [...(regularSeasonData.events || []), ...(playoffData.events || [])];
+
+                if (allGames.length === 0) {
+                    document.getElementById('gamesTable').innerHTML = "<thead><tr><th>Date</th><th>Team</th><th>Score</th><th>Opponent</th><th>W/L</th></tr></thead><tbody><tr><td colspan='5'>No games found.</td></tr></tbody>";
+                    return;
+                }
+
+                const completedGames = allGames.filter(game =>
+                    game.competitions[0].status.type.completed === true
+                );
+
+                if (completedGames.length === 0) {
+                    document.getElementById('gamesTable').innerHTML = "<thead><tr><th>Date</th><th>Team</th><th>Score</th><th>Opponent</th><th>W/L</th></tr></thead><tbody><tr><td colspan='5'>No completed games available.</td></tr></tbody>";
+                    return;
+                }
+
+                completedGames.sort((a, b) =>
+                    new Date(b.competitions[0].date) - new Date(a.competitions[0].date)
+                );
+
+                const recentGames = completedGames.slice(0, 5);
+
+                const rowsHtml = recentGames.map(game => {
+                    const comps = game.competitions[0].competitors;
+                    const selectedTeamObj = comps.find(t => t.team.id == teamEspnId);
+                    const opponentTeam   = comps.find(t => t.team.id != teamEspnId);
+
+                    if (!teamLogoUrl) {
+                        teamLogoUrl     = getLogoUrl(selectedTeamObj.team);
+                        teamDisplayName = selectedTeamObj.team.displayName;
+                    }
+
+                    const selScore = selectedTeamObj.score ? parseInt(selectedTeamObj.score.value) : 0;
+                    const oppScore = opponentTeam.score   ? parseInt(opponentTeam.score.value)   : 0;
+                    const result   = selScore > oppScore ? "W" : "L";
+                    const gameDate = new Date(game.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+
+                    return `<tr>
+                                <td>${gameDate}</td>
+                                <td><img src="${getLogoUrl(selectedTeamObj.team)}" style="height:30px; margin-right:4px;">${selectedTeamObj.team.displayName}</td>
+                                <td>${selScore}‑${oppScore}</td>
+                                <td><img src="${getLogoUrl(opponentTeam.team)}" style="height:30px; margin-right:4px;">${opponentTeam.team.displayName}</td>
+                                <td>${result}</td>
+                            </tr>`;
+                }).join("");
+
+                document.getElementById('gamesTable').innerHTML =
+                    `<thead><tr><th>Date</th><th>Team</th><th>Score</th><th>Opponent</th><th>W/L</th></tr></thead><tbody>${rowsHtml}</tbody>`;
+
+                // show big logo next to record
+                if (teamLogoUrl) {
+                    const logoElem = document.getElementById('teamLogo');
+                    logoElem.src = teamLogoUrl;
+                    logoElem.alt = teamDisplayName + " logo";
+                    logoElem.style.display = "inline-block";
+                }
+
+                updateRecord(completedGames, teamId);
+
+            } catch (error) {
+                document.getElementById('gamesTable').innerHTML = "<thead><tr><th>Date</th><th>Team</th><th>Score</th><th>Opponent</th><th>W/L</th></tr></thead><tbody><tr><td colspan='5'>Error fetching game data.</td></tr></tbody>";
+                console.error("Error fetching game:", error);
+            }
+        }
+
+        function updateRecord(games, teamId) {
+            const teamEspnId = teamMappings[teamId];
+            let wins = 0;
+            let losses = 0;
+
+            games.forEach((game, index) => {
+                console.log("game", index, " - ", game);
+
+                const competitors = game.competitions[0].competitors;
+                let selectedTeamObj = null;
+                let opponentTeam = null;
+
+                competitors.forEach(currentTeam => {
+                    if (currentTeam.team.id == teamEspnId) {
+                        selectedTeamObj = currentTeam;
+                    } else {
+                        opponentTeam = currentTeam;
+                    }
+                });
+
+                let selectedTeamScore = selectedTeamObj?.score ? parseInt(selectedTeamObj.score.value) : 0;
+                let opponentScore = opponentTeam?.score ? parseInt(opponentTeam.score.value) : 0;
+
+                console.log(selectedTeamScore);
+                console.log(opponentScore);
+
+                if (selectedTeamScore > opponentScore) {
+                    wins++;
+                } else if (selectedTeamScore < opponentScore) {
+                    losses++;
+                }
+            });
+
+            document.getElementById('record').innerText = `${wins}-${losses}`;
+        }
+
+        async function fetchLatestHeadlines(teamId) {
+            try {
+                const teamEspnId = teamMappings[teamId];
+
+                const response = await fetch(`https://site.api.espn.com/apis/site/v2/sports/basketball/nba/news?team=${teamEspnId}`);
+                const data = await response.json();
+
+                const headlinesList = document.getElementById('headlinesList');
+                headlinesList.innerHTML = '';
+
+                const nonPremiumArticles = data.articles.filter(article => !article.premium);
+
+                if (nonPremiumArticles.length > 0) {
+                    const recentHeadlines = nonPremiumArticles.slice(0, 3);
+                    recentHeadlines.forEach(article => {
+                        const listItem = document.createElement('li');
+                        const articleDate = new Date(article.published || article.lastModified || article.updated).toLocaleDateString(
+                            undefined,
+                            { year: 'numeric', month: 'short', day: 'numeric' }
+                        );
+                        listItem.innerHTML = `${articleDate}: `;
+                        const link = document.createElement('a');
+                        link.href = article.links.web.href;
+                        link.innerText = article.headline;
+                        link.target = "_blank";
+                        listItem.appendChild(link);
+                        headlinesList.appendChild(listItem);
+                    });
+                } else {
+                    headlinesList.innerText = "No recent headlines available.";
+                }
+
+            } catch (error) {
+                document.getElementById('headlinesList').innerText = "Error fetching headlines.";
+                console.error("Error fetching headlines:", error);
+            }
+        }
+
+        // Initial data is not loaded until a team is selected.
+    </script>
+</body>
+
+</html>
